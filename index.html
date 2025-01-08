@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FANZA</title>
+    <title>年齢確認</title>
     <style>
+        /* 既存のスタイルはそのまま */
         * {
             margin: 0;
             padding: 0;
@@ -18,7 +19,7 @@
             line-height: 1.6;
             min-height: 100vh;
             display: flex;
-            flex-direction: column; /* 変更: 縦方向のフレックスボックス */
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 20px;
@@ -136,7 +137,6 @@
             margin-bottom: 1.5rem;
         }
 
-        /* 広告用のスタイル */
         .ad-container {
             margin-top: 30px;
             text-align: center;
@@ -243,7 +243,28 @@
     </div>
 
     <script>
+        // 警報音の再生関数
+        function playAlarm() {
+            const alarm = new Audio('keihou.mp3');
+            alarm.volume = 1.0; // 最大音量
+            
+            // ミュート解除を試みる
+            alarm.muted = false;
+            
+            // 音声を再生
+            const playPromise = alarm.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    // 自動再生成功
+                }).catch(error => {
+                    console.log("音声の自動再生に失敗しました:", error);
+                });
+            }
+        }
+
         function showSecondConfirmation() {
+            playAlarm(); // 警報音を再生
             document.getElementById('secondConfirmation').style.display = 'flex';
         }
 
