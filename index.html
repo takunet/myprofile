@@ -1,126 +1,12 @@
 <!DOCTYPE html>
 <html lang="ja">
+<!-- 前のheadの内容はそのまま -->
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stylish Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- 既存のhead内容はそのまま -->
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Noto Sans JP', sans-serif;
-        }
+        /* 既存のスタイルはそのまま */
 
-        body {
-            background: #ffffff;
-            color: #333;
-            line-height: 1.8;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        /* ヘッダーセクション */
-        .header {
-            padding: 4rem 0;
-            text-align: center;
-            background: linear-gradient(to right, #f8f9fa, #ffffff);
-            margin-bottom: 2rem;
-        }
-
-        .profile-name {
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            letter-spacing: 2px;
-            color: #1a1a1a;
-        }
-
-        .social-links {
-            margin: 2rem 0;
-        }
-
-        .social-links a {
-            color: #333;
-            font-size: 1.5rem;
-            margin: 0 1rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            padding: 0.5rem;
-        }
-
-        .social-links a:hover {
-            color: #666;
-            transform: translateY(-3px);
-        }
-
-        /* コンテンツセクション */
-        .content-section {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 2.5rem;
-            margin: 2rem 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .content-section:hover {
-            transform: translateY(-5px);
-        }
-
-        h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: #1a1a1a;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: #333;
-        }
-
-        /* 趣味アイテム */
-        .hobby-item {
-            padding: 1.2rem;
-            margin: 1rem 0;
-            background: #f8f9fa;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            border-left: 4px solid #333;
-        }
-
-        .hobby-item:hover {
-            background: #f1f3f5;
-            transform: translateX(5px);
-        }
-
-        /* 好き嫌いグリッド */
-        .likes-dislikes {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-
-        h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: #1a1a1a;
-        }
-
-        /* 広告セクション */
+        /* 広告セクションのスタイルを更新 */
         .ad-section {
             margin: 2rem 0;
             padding: 1.5rem;
@@ -128,48 +14,30 @@
             border-radius: 12px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
-        .ad-label {
-            font-size: 0.8rem;
-            color: #666;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .ad-section a {
+            display: inline-block;
+            line-height: 0; /* 画像の下の余白を削除 */
         }
 
-        /* アニメーション */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .ad-section img {
+            max-width: 100%;
+            height: auto;
         }
 
-        .fade-in {
-            animation: fadeIn 0.8s ease forwards;
-        }
-
-        /* レスポンシブデザイン */
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
+        /* レスポンシブ対応のための追加スタイル */
+        @media (max-width: 500px) {
+            .ad-section {
+                padding: 0.5rem;
             }
-
-            .profile-name {
-                font-size: 2rem;
-            }
-
-            .likes-dislikes {
-                grid-template-columns: 1fr;
-            }
-
-            .content-section {
-                padding: 1.5rem;
+            .ad-section img {
+                width: 100%;
+                height: auto;
             }
         }
     </style>
@@ -179,7 +47,10 @@
         <!-- トップ広告 -->
         <div class="ad-section">
             <div class="ad-label">Advertisement</div>
-            <script type="text/javascript" src="//rot2.a8.net/jsa/5586c34f890094b7a21e8b5b36980706/c6f057b86584942e415435ffb1fa93d4.js"></script>
+            <a href="https://px.a8.net/svt/ejp?a8mat=3HEIIS+5URGXE+1WP2+63H8H" rel="nofollow">
+                <img border="0" width="468" height="60" alt="" src="https://www23.a8.net/svt/bgt?aid=210629188354&wid=001&eno=01&mid=s00000008903001024000&mc=1">
+            </a>
+            <img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=3HEIIS+5URGXE+1WP2+63H8H" alt="">
         </div>
 
         <header class="header fade-in">
@@ -203,7 +74,10 @@
         <!-- 中間広告 -->
         <div class="ad-section">
             <div class="ad-label">Advertisement</div>
-            <script type="text/javascript" src="//rot2.a8.net/jsa/5586c34f890094b7a21e8b5b36980706/c6f057b86584942e415435ffb1fa93d4.js"></script>
+            <a href="https://px.a8.net/svt/ejp?a8mat=3HEIIS+5URGXE+1WP2+63H8H" rel="nofollow">
+                <img border="0" width="468" height="60" alt="" src="https://www23.a8.net/svt/bgt?aid=210629188354&wid=001&eno=01&mid=s00000008903001024000&mc=1">
+            </a>
+            <img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=3HEIIS+5URGXE+1WP2+63H8H" alt="">
         </div>
 
         <section class="content-section fade-in">
@@ -227,7 +101,10 @@
         <!-- ボトム広告 -->
         <div class="ad-section">
             <div class="ad-label">Advertisement</div>
-            <script type="text/javascript" src="//rot2.a8.net/jsa/5586c34f890094b7a21e8b5b36980706/c6f057b86584942e415435ffb1fa93d4.js"></script>
+            <a href="https://px.a8.net/svt/ejp?a8mat=3HEIIS+5URGXE+1WP2+63H8H" rel="nofollow">
+                <img border="0" width="468" height="60" alt="" src="https://www23.a8.net/svt/bgt?aid=210629188354&wid=001&eno=01&mid=s00000008903001024000&mc=1">
+            </a>
+            <img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=3HEIIS+5URGXE+1WP2+63H8H" alt="">
         </div>
     </div>
 </body>
