@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>年齢確認</title>
+    <title>FANZA</title>
     <style>
         * {
             margin: 0;
@@ -18,8 +18,10 @@
             line-height: 1.6;
             min-height: 100vh;
             display: flex;
+            flex-direction: column; /* 変更: 縦方向のフレックスボックス */
             justify-content: center;
             align-items: center;
+            padding: 20px;
         }
 
         .age-verification {
@@ -30,7 +32,6 @@
             width: 90%;
             text-align: center;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            margin-bottom: 100px; /* 広告のスペース確保 */
         }
 
         .warning-icon {
@@ -137,15 +138,11 @@
 
         /* 広告用のスタイル */
         .ad-container {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 999;
+            margin-top: 30px;
             text-align: center;
             width: 100%;
             max-width: 468px;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(30, 30, 30, 0.95);
             padding: 10px;
             border-radius: 5px;
         }
@@ -153,7 +150,6 @@
         @media (max-width: 480px) {
             .age-verification {
                 padding: 1.5rem;
-                margin-bottom: 80px; /* モバイルでの広告スペース調整 */
             }
 
             h1 {
@@ -179,7 +175,7 @@
             }
 
             .ad-container {
-                bottom: 10px;
+                margin-top: 20px;
                 padding: 5px;
             }
         }
@@ -203,6 +199,11 @@
             ※ 「はい、18歳以上です」をクリックした場合、<br>
             あなたが18歳以上であることを確認したものとさせていただきます。
         </p>
+    </div>
+
+    <!-- 広告コンテナ -->
+    <div class="ad-container">
+        <script type="text/javascript" src="//rot0.a8.net/jsa/5586c34f890094b7a21e8b5b36980706/c6f057b86584942e415435ffb1fa93d4.js"></script>
     </div>
 
     <div id="secondConfirmation" class="modal">
@@ -239,11 +240,6 @@
                 <button onclick="location.href='https://kids.yahoo.co.jp/'" class="btn btn-no">私はガキです</button>
             </div>
         </div>
-    </div>
-
-    <!-- 広告コンテナ -->
-    <div class="ad-container">
-        <script type="text/javascript" src="//rot0.a8.net/jsa/5586c34f890094b7a21e8b5b36980706/c6f057b86584942e415435ffb1fa93d4.js"></script>
     </div>
 
     <script>
