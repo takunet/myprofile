@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>年齢確認</title>
+    <!-- 音声ファイルのプリロード -->
+    <audio id="alarmSound" preload="auto">
+        <source src="keihou.mp3" type="audio/mpeg">
+        <source src="keihou.ogg" type="audio/ogg">
+        <source src="keihou.wav" type="audio/wav">
+    </audio>
     <style>
-        /* 既存のスタイルはそのまま */
         * {
             margin: 0;
             padding: 0;
@@ -39,6 +44,13 @@
             font-size: 3rem;
             color: #ff0000;
             margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
 
         h1 {
@@ -129,6 +141,18 @@
             text-align: center;
             position: relative;
             box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+            animation: modalAppear 0.3s ease-out;
+        }
+
+        @keyframes modalAppear {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
         .modal-warning {
@@ -145,6 +169,12 @@
             background-color: rgba(30, 30, 30, 0.95);
             padding: 10px;
             border-radius: 5px;
+        }
+
+        @keyframes flash {
+            0% { background-color: #000; }
+            50% { background-color: rgba(255, 0, 0, 0.3); }
+            100% { background-color: #000; }
         }
 
         @media (max-width: 480px) {
@@ -243,28 +273,86 @@
     </div>
 
     <script>
-        // 警報音の再生関数
-        function playAlarm() {
-            const alarm = new Audio('keihou.mp3');
-            alarm.volume = 1.0; // 最大音量
+        // グローバル変数として警報音を設定
+        let alarmSound;
+        let audioContext;
+        
+        // ページ読み込み時に音声を初期化
+        window.onload = function() {
+            // 音声要素の取得
+            alarmSound = document.getElementById('alarmSound');
             
-            // ミュート解除を試みる
-            alarm.muted = false;
+            // 音声の設定
+            alarmSound.volume = 1.0;
+            alarmSound.load();
+
+            // AudioContextの初期化
+            try {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            } catch(e) {
+                console.log('Web Audio API is not supported in this browser');
+            }
             
-            // 音声を再生
-            const playPromise = alarm.play();
-            
-            if (playPromise !== undefined) {
-                playPromise.then(_ => {
-                    // 自動再生成功
-                }).catch(error => {
-                    console.log("音声の自動再生に失敗しました:", error);
+            // iOS対応のため、ユーザーインタラクションで音声を有効化
+            document.body.addEventListener('click', function() {
+                if (audioContext && audioContext.state === 'suspended') {
+                    audioContext.resume();
+                }
+                alarmSound.play().catch(function(error) {
+                    console.log("Initial play failed:", error);
                 });
+                alarmSound.pause();
+            }, { once: true });
+        };
+
+        // 警報音を確実に再生する関数
+        async function playAlarm() {
+            try {
+                // 既存の音声を停止してリセット
+                alarmSound.pause();
+                alarmSound.currentTime = 0;
+                
+                // 音声設定を最大に
+                alarmSound.volume = 1.0;
+                alarmSound.muted = false;
+                
+                // 複数の方法で再生を試みる
+                await Promise.any([
+                    alarmSound.play(),
+                    new Audio('keihou.mp3').play(),
+                    playWithWebAudio()
+                ]);
+            } catch (error) {
+                console.log("All playback attempts failed:", error);
+                // フォールバック: 視覚的な警告のみ
+                document.body.style.animation = 'flash 0.5s infinite';
             }
         }
 
+        // Web Audio APIを使用した再生
+        async function playWithWebAudio() {
+            if (!audioContext) return Promise.reject('AudioContext not available');
+            
+            const response = await fetch('keihou.mp3');
+            const arrayBuffer = await response.arrayBuffer();
+            const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+            
+            const source = audioContext.createBufferSource();
+            source.buffer = audioBuffer;
+            source.connect(audioContext.destination);
+            source.start(0);
+            
+            return Promise.resolve();
+        }
+
         function showSecondConfirmation() {
-            playAlarm(); // 警報音を再生
+            // 警報音を再生
+            playAlarm();
+            
+            // 画面を赤く点滅させる
+            document.body.style.animation = 'flash 0.5s infinite';
+            
+            // モーダルを表示
             document.getElementById('secondConfirmation').style.display = 'flex';
         }
 
