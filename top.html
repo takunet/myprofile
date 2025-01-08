@@ -272,6 +272,102 @@
         }
     </style>
 </head>
-<!-- body部分は前回のコードと同じ -->
+<div class="container">
+        <!-- トップ広告 -->
+        <div class="ad-section">
+            <script type="text/javascript" src="//rot0.a8.net/jsa/5586c34f890094b7a21e8b5b36980706/c6f057b86584942e415435ffb1fa93d4.js"></script>
+        </div>
+
+        <header class="header">
+            <h1 class="profile-name">たくと</h1>
+            <div class="social-links">
+                <a href="https://www.instagram.com/taku_photo_insta" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2>自己紹介</h2>
+            <div class="intro-text">
+                <p>こんにちは！私は<strong>たくと</strong>です。</p>
+                <p>以下プロフィール</p>
+            </div>
+            <ul class="profile-list">
+                <li><strong>年齢:</strong> <span id="age"></span>歳</li>
+                <li><strong>学歴:</strong> 大学中退</li>
+                <li><strong>趣味:</strong> 旅行、YouTube鑑賞、散歩</li>
+                <li><strong>好きな食べ物:</strong> ミラノ風ドリア</li>
+                <li><strong>嫌いな食べ物:</strong> 薬味系（わさび、しょうが等）、辛いもの、酸っぱいもの、甘すぎるもの</li>
+                <li><strong>好きな音楽:</strong> Mrs.GREEN APPLE、Martin Garrix、Steve Aoki、RetroVision、Third Party</li>
+                <li><strong>Instagram:</strong> 
+                    <a href="https://www.instagram.com/taku_photo_insta" target="_blank">@taku_photo_insta</a>
+                </li>
+                <li><strong>総資産:</strong> <span id="asset"></span>円</li>
+            </ul>
+        </section>
+
+        <!-- 中間広告 -->
+        <div class="ad-section">
+            <script type="text/javascript" src="//rot0.a8.net/jsa/5586c34f890094b7a21e8b5b36980706/c6f057b86584942e415435ffb1fa93d4.js"></script>
+        </div>
+
+        <section class="section">
+            <h2>好き嫌い</h2>
+            <div class="likes-dislikes">
+                <div>
+                    <h3>好きなもの</h3>
+                    <div class="hobby-item">ミラノ風ドリア</div>
+                    <div class="hobby-item">Mrs.GREEN APPLE</div>
+                    <div class="hobby-item">旅行</div>
+                </div>
+                <div>
+                    <h3>苦手なもの</h3>
+                    <div class="hobby-item">薬味系（わさび、しょうが等）</div>
+                    <div class="hobby-item">辛いもの</div>
+                    <div class="hobby-item">酸っぱいもの</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ボトム広告 -->
+        <div class="ad-section">
+            <script type="text/javascript" src="//rot0.a8.net/jsa/5586c34f890094b7a21e8b5b36980706/c6f057b86584942e415435ffb1fa93d4.js"></script>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 たくとのポートフォリオ</p>
+            <a href="privacy.html">プライバシーポリシー</a>
+        </footer>
+    </div>
+
+    <!-- BGM -->
+    <audio id="bgm" autoplay loop>
+        <source src="famipop3.mp3" type="audio/mpeg">
+        お使いのブラウザはaudioタグをサポートしていません。
+    </audio>
+
+    <script>
+        // 年齢計算
+        const birthYear = 2002;
+        const birthMonth = 12;
+        const birthDay = 24;
+        const today = new Date();
+        let age = today.getFullYear() - birthYear;
+        if (today.getMonth() + 1 < birthMonth || (today.getMonth() + 1 === birthMonth && today.getDate() < birthDay)) {
+            age--;
+        }
+        document.getElementById("age").textContent = age;
+
+        // 資産額をランダム生成
+        const asset = 1000 + Math.floor(Math.random() * 9000);
+        document.getElementById("asset").textContent = asset;
+
+        // 音楽の音量を最大に設定
+        window.addEventListener('DOMContentLoaded', () => {
+            const bgm = document.getElementById('bgm');
+            bgm.volume = 1.0;  // 最大音量
+        });
+    </script>
 </body>
 </html>
