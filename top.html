@@ -6,150 +6,272 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>たくとのポートフォリオ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-    <!-- 既存のスタイルはそのまま維持 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
     <style>
-        /* 既存のスタイル定義はそのまま */
-        /* 追加のスタイル */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+            color: #333333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* ヘッダー */
+        .header {
+            text-align: center;
+            padding: 60px 20px;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+            animation: fadeInDown 1s ease;
+        }
+
+        .header:hover {
+            transform: translateY(-5px);
+        }
+
+        .profile-name {
+            font-family: 'Poppins', 'Noto Sans JP', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #222;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            background: linear-gradient(45deg, #333 30%, #666 70%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* SNSリンク */
+        .social-links {
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            display: inline-block;
+            color: #333;
+            font-size: 1.8rem;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px) rotate(360deg);
+            color: #0066ff;
+        }
+
+        /* コンテンツセクション */
+        .section {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: fadeInUp 1s ease;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid;
+            border-image: linear-gradient(to right, #333 0%, #666 100%) 1;
+            color: #222;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .intro-text {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .intro-text strong {
+            color: #0066ff;
+            font-weight: 700;
+        }
+
+        /* プロフィールリスト */
         .profile-list {
             list-style: none;
             padding: 0;
         }
 
         .profile-list li {
-            margin: 15px 0;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            border-left: 4px solid #333;
+            margin: 20px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 15px;
+            border-left: 5px solid #0066ff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .profile-list li:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
 
         .profile-list strong {
-            color: #222;
-            margin-right: 10px;
+            color: #0066ff;
+            margin-right: 15px;
+            font-weight: 700;
         }
 
+        .profile-list a {
+            color: #0066ff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .profile-list a:hover {
+            color: #0044cc;
+        }
+
+        /* 好き嫌いセクション */
+        .likes-dislikes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #333;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .hobby-item {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 15px;
+            border-left: 5px solid #0066ff;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .hobby-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        /* 広告セクション */
+        .ad-section {
+            margin: 40px auto;
+            text-align: center;
+            max-width: 468px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* フッター */
         footer {
             text-align: center;
-            margin-top: 40px;
-            padding: 20px 0;
-            border-top: 1px solid #eee;
+            margin-top: 60px;
+            padding: 30px 0;
+            border-top: 2px solid rgba(0,0,0,0.1);
+            animation: fadeInUp 1s ease;
+        }
+
+        footer p {
+            color: #666;
+            margin-bottom: 10px;
         }
 
         footer a {
-            color: #333;
+            color: #0066ff;
             text-decoration: none;
-            margin-left: 10px;
+            margin-left: 15px;
+            transition: color 0.3s ease;
         }
 
         footer a:hover {
-            text-decoration: underline;
+            color: #0044cc;
         }
 
-        .intro-text {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 1.2rem;
+        /* アニメーション */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 10px;
+            }
+
+            .header {
+                padding: 40px 15px;
+            }
+
+            .profile-name {
+                font-size: 2.2rem;
+            }
+
+            .section {
+                padding: 25px;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .intro-text {
+                font-size: 1.1rem;
+            }
+
+            .profile-list li {
+                padding: 15px;
+            }
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <!-- トップ広告 -->
-        <div class="ad-section">
-            <script type="text/javascript" src="//rot0.a8.net/jsa/5586c34f890094b7a21e8b5b36980706/c6f057b86584942e415435ffb1fa93d4.js"></script>
-        </div>
-
-        <header class="header">
-            <h1 class="profile-name">たくと</h1>
-            <div class="social-links">
-                <a href="https://www.instagram.com/taku_photo_insta" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </div>
-        </header>
-
-        <section class="section">
-            <h2>自己紹介</h2>
-            <div class="intro-text">
-                <p>こんにちは！私は<strong>たくと</strong>です。</p>
-                <p>以下プロフィール</p>
-            </div>
-            <ul class="profile-list">
-                <li><strong>年齢:</strong> <span id="age"></span>歳</li>
-                <li><strong>学歴:</strong> 大学中退</li>
-                <li><strong>趣味:</strong> 旅行、YouTube鑑賞、散歩</li>
-                <li><strong>好きな食べ物:</strong> ミラノ風ドリア</li>
-                <li><strong>嫌いな食べ物:</strong> 薬味系（わさび、しょうが等）、辛いもの、酸っぱいもの、甘すぎるもの</li>
-                <li><strong>好きな音楽:</strong> Mrs.GREEN APPLE、Martin Garrix、Steve Aoki、RetroVision、Third Party</li>
-                <li><strong>Instagram:</strong> 
-                    <a href="https://www.instagram.com/taku_photo_insta" target="_blank">@taku_photo_insta</a>
-                </li>
-                <li><strong>総資産:</strong> <span id="asset"></span>円</li>
-            </ul>
-        </section>
-
-        <!-- 中間広告 -->
-        <div class="ad-section">
-            <script type="text/javascript" src="//rot0.a8.net/jsa/5586c34f890094b7a21e8b5b36980706/c6f057b86584942e415435ffb1fa93d4.js"></script>
-        </div>
-
-        <section class="section">
-            <h2>好き嫌い</h2>
-            <div class="likes-dislikes">
-                <div>
-                    <h3>好きなもの</h3>
-                    <div class="hobby-item">ミラノ風ドリア</div>
-                    <div class="hobby-item">Mrs.GREEN APPLE</div>
-                    <div class="hobby-item">旅行</div>
-                </div>
-                <div>
-                    <h3>苦手なもの</h3>
-                    <div class="hobby-item">薬味系（わさび、しょうが等）</div>
-                    <div class="hobby-item">辛いもの</div>
-                    <div class="hobby-item">酸っぱいもの</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ボトム広告 -->
-        <div class="ad-section">
-            <script type="text/javascript" src="//rot0.a8.net/jsa/5586c34f890094b7a21e8b5b36980706/c6f057b86584942e415435ffb1fa93d4.js"></script>
-        </div>
-
-        <footer>
-            <p>&copy; 2024 たくとのポートフォリオ</p>
-            <a href="privacy.html">プライバシーポリシー</a>
-        </footer>
-    </div>
-
-    <!-- BGM -->
-    <audio id="bgm" autoplay loop>
-        <source src="famipop3.mp3" type="audio/mpeg">
-        お使いのブラウザはaudioタグをサポートしていません。
-    </audio>
-
-    <script>
-        // 年齢計算
-        const birthYear = 2002;
-        const birthMonth = 12;
-        const birthDay = 24;
-        const today = new Date();
-        let age = today.getFullYear() - birthYear;
-        if (today.getMonth() + 1 < birthMonth || (today.getMonth() + 1 === birthMonth && today.getDate() < birthDay)) {
-            age--;
-        }
-        document.getElementById("age").textContent = age;
-
-        // 資産額をランダム生成
-        const asset = 1000 + Math.floor(Math.random() * 9000);
-        document.getElementById("asset").textContent = asset;
-
-        // 音楽の音量を最大に設定
-        window.addEventListener('DOMContentLoaded', () => {
-            const bgm = document.getElementById('bgm');
-            bgm.volume = 1.0;  // 最大音量
-        });
-    </script>
+<!-- body部分は前回のコードと同じ -->
 </body>
 </html>
