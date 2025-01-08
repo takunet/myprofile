@@ -151,44 +151,33 @@
             color: #0044cc;
         }
 
-        /* 好き嫌いセクション */
-        .likes-dislikes {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: #333;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-        }
-
-        .hobby-item {
-            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-            padding: 20px;
-            margin: 15px 0;
-            border-radius: 15px;
-            border-left: 5px solid #0066ff;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .hobby-item:hover {
-            transform: translateX(10px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-
         /* 広告セクション */
         .ad-section {
             margin: 40px auto;
             text-align: center;
+            width: 100%;
             max-width: 468px;
             background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            padding: 20px;
+            padding: 15px;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ad-wrapper {
+            width: 100%;
+            height: 60px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ad-wrapper script {
+            display: block;
         }
 
         /* フッター */
@@ -270,12 +259,22 @@
                 padding: 15px;
             }
         }
+
+        @media (max-width: 480px) {
+            .ad-section {
+                max-width: 320px;
+                padding: 10px;
+            }
+        }
     </style>
 </head>
-<div class="container">
+<body>
+    <div class="container">
         <!-- トップ広告 -->
         <div class="ad-section">
-            <script type="text/javascript" src="//rot0.a8.net/jsa/5586c34f890094b7a21e8b5b36980706/c6f057b86584942e415435ffb1fa93d4.js"></script>
+            <div class="ad-wrapper">
+                <script type="text/javascript" src="//rot0.a8.net/jsa/5586c34f890094b7a21e8b5b36980706/c6f057b86584942e415435ffb1fa93d4.js"></script>
+            </div>
         </div>
 
         <header class="header">
@@ -309,30 +308,16 @@
 
         <!-- 中間広告 -->
         <div class="ad-section">
-            <script type="text/javascript" src="//rot0.a8.net/jsa/5586c34f890094b7a21e8b5b36980706/c6f057b86584942e415435ffb1fa93d4.js"></script>
-        </div>
-
-        <section class="section">
-            <h2>好き嫌い</h2>
-            <div class="likes-dislikes">
-                <div>
-                    <h3>好きなもの</h3>
-                    <div class="hobby-item">ミラノ風ドリア</div>
-                    <div class="hobby-item">Mrs.GREEN APPLE</div>
-                    <div class="hobby-item">旅行</div>
-                </div>
-                <div>
-                    <h3>苦手なもの</h3>
-                    <div class="hobby-item">薬味系（わさび、しょうが等）</div>
-                    <div class="hobby-item">辛いもの</div>
-                    <div class="hobby-item">酸っぱいもの</div>
-                </div>
+            <div class="ad-wrapper">
+                <script type="text/javascript" src="//rot0.a8.net/jsa/5586c34f890094b7a21e8b5b36980706/c6f057b86584942e415435ffb1fa93d4.js"></script>
             </div>
-        </section>
+        </div>
 
         <!-- ボトム広告 -->
         <div class="ad-section">
-            <script type="text/javascript" src="//rot0.a8.net/jsa/5586c34f890094b7a21e8b5b36980706/c6f057b86584942e415435ffb1fa93d4.js"></script>
+            <div class="ad-wrapper">
+                <script type="text/javascript" src="//rot0.a8.net/jsa/5586c34f890094b7a21e8b5b36980706/c6f057b86584942e415435ffb1fa93d4.js"></script>
+            </div>
         </div>
 
         <footer>
